@@ -1,4 +1,5 @@
 # coding = utf-8
+# sensor DHT11
 # python version 3
 
 import RPi.GPIO as GPIO

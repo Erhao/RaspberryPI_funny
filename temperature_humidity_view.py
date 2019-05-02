@@ -77,7 +77,7 @@ if __name__ == '__main__':
 		while 1:
 			res_list = []
 			while 1:
-				if len(res_list) > 5:
+				if len(res_list) > 10:
 					break
 				res = compute(driver(channel))
 				res_list.append(res)

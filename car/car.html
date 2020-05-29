@@ -1,0 +1,156 @@
+<html>
+    <head>
+        <title>First Car</title>
+    </head>
+    <body>
+        <div id="con">init</div>
+        <a href="javascript: go()" id="go">前进</a>
+        <a href="javascript: back()" id="back">后退</a>
+        <a href="javascript: turn_left_in_suit()" id="turn_left_in_suit">原地左转</a>
+        <a href="javascript: turn_right_in_suit()" id="turn_right_in_suit">原地右转</a>
+        <br>
+        <a href="javascript: stop()" id="">停止</a>
+    </body>
+    <script src="./jquery-3.4.1.min.js">
+</script>
+    <script>
+        var ipaddr = "10.151.9.158"
+
+        // move
+        document.onkeydown = function(ev){
+                var ev = ev || window.event;
+                switch(ev.keyCode){
+                    case 37:
+                    case 65:
+                        turn_left_in_suit();
+                    break;
+                    case 38:
+                    case 87:
+                        go();
+                    break;
+                    case 39:
+                    case 68:
+                        turn_right_in_suit();
+                    break;
+                    case 40:
+                    case 83:
+                        back();
+                    break;
+                    case 81:
+                        turn_left_ahead();
+                    break;
+                    case 69:
+                        turn_right_ahead();
+                    break;
+                    case 90:
+                        turn_left_back();
+                    break;
+                    case 67:
+                        turn_right_back();
+                    break;
+                    default:
+                        console.log("请按上下左右键");
+                    break;
+                }
+                console.log(ev.keyCode);
+        }
+
+        //stop
+        document.onkeyup = function(ev){
+                var ev = ev || window.event;
+                switch(ev.keyCode){
+                    case 37:
+                    case 38:
+                    case 39:
+                    case 40:
+                    case 65:
+                    case 68:
+                    case 83:
+                    case 87:
+                    case 81:
+                    case 69:
+                    case 90:
+                    case 67:
+                        stop();
+                    break;
+                    default:
+                        console.log("请按上下左右键");
+                    break;
+                }
+                console.log(ev.keyCode);
+        }
+
+        function go() {
+            $.get(
+                "http://"+ipaddr+":5000/go",
+                function (result) {
+                    $("#con").html("go!!!", result)
+                }
+            );
+        };
+        function back() {
+            $.get(
+                "http://"+ipaddr+":5000/back",
+                function (result) {
+                    $("#con").html("back", result)
+                }
+            );
+        };
+        function turn_left_in_suit() {
+            $.get(
+                "http://"+ipaddr+":5000/turn_left_in_suit",
+                function (result) {
+                    $("#con").html("正在原地左转", result)
+                }
+            );
+        };
+        function turn_right_in_suit() {
+            $.get(
+                "http://"+ipaddr+":5000/turn_right_in_suit",
+                function (result) {
+                    $("#con").html("正在原地右转", result)
+                }
+            );
+        };
+        function stop() {
+            $.get(
+                "http://"+ipaddr+":5000/stop",
+                function (result) {
+                    $("#con").html("停止!!!", result)
+                }
+            );
+        };
+        function turn_left_ahead() {
+            $.get(
+                "http://"+ipaddr+":5000/turn_left_ahead",
+                function (result) {
+                    $("#con").html("左前行!!!", result)
+                }
+            );
+        };
+        function turn_right_ahead() {
+            $.get(
+                "http://"+ipaddr+":5000/turn_right_ahead",
+                function (result) {
+                    $("#con").html("右前行!!!", result)
+                }
+            );
+        };
+        function turn_left_back() {
+            $.get(
+                "http://"+ipaddr+":5000/turn_left_back",
+                function (result) {
+                    $("#con").html("左后行!!!", result)
+                }
+            );
+        };
+        function turn_right_back() {
+            $.get(
+                "http://"+ipaddr+":5000/turn_right_back",
+                function (result) {
+                    $("#con").html("右后行!!!", result)
+                }
+            );
+        };
+    </script>
+</html>

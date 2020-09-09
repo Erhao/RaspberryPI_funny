@@ -1,2 +1,3 @@
 # RaspberryPi_funny
-Some solutions in the IoT scenario that RaspberryPi supported, for fun.
+
+Some scripts in the IoT scenario that RaspberryPi supported, for fun and the support of future.
